@@ -1,10 +1,11 @@
 
 class HttpRequestSender
     require "net/https"
-    def initialize
+    def initialize(base_url)
+        @base_url = base_url
     end
-    def get(url,params)
-        uri = URI.parse(url)
+    def get(path,params)
+        uri = URI.parse(@base_url + path)
         uri.query = URI.encode_www_form(params)
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new uri.request_uri
