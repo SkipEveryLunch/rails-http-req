@@ -9,6 +9,15 @@ class HttpRequestSender
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new uri.request_uri
         req['X-Test-Header'] = '1234'
-        http.request req
+        res = http.request req
+    end
+    def post
+        #postの処理
+    end
+    def put
+        #putの処理
+    end
+    def delete
+        #deleteの処理
     end
 end
